@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink:          #0b0b0f;
+  --color-muted:        #71717a;
+  --color-hairline:     #ededf0;
+  --color-rise:         #16a34a;
+  --color-rise-soft:    #f0fdf4;
+  --color-fall:         #e11d48;
+  --color-fall-soft:    #fff1f2;
+  --color-mutual:       #d97706;
+  --color-mutual-soft:  #fffbeb;
+  --color-accent:       #4f46e5;
+  --color-accent-soft:  #eef2ff;
+}
+
+html, body { background: #ffffff; color: var(--color-ink); }
+
+@keyframes shimmer-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+.animate-shimmer { animation: shimmer-pulse 1.4s ease-in-out infinite; }

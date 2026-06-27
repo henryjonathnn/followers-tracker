@@ -1,0 +1,13 @@
+{
+  "name": "ig-follower-tracker",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "overrides": { "elysia": "1.4.28" },
+  "scripts": {
+    "dev:api": "bun run --cwd apps/api dev",
+    "dev:web": "bun run --cwd apps/web dev",
+    "sync": "bun run --cwd apps/api sync",
+    "migrate": "bun run --cwd apps/api migrate",
+    "test": "bun run --cwd apps/api test"
+  }
+}
