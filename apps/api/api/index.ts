@@ -4,4 +4,10 @@ import { loadApiEnv } from '../src/config/env';
 const env = loadApiEnv();
 const app = createApp(env);
 
-export default { fetch: (request: Request) => app.handle(request) };
+export const config = {
+  runtime: 'nodejs20.x',  // bukan edge — biar Turso libsql compatible
+};
+
+export default async function handler(req: Request) {
+  return app.fetch(req);
+}
