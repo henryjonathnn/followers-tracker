@@ -20,8 +20,10 @@ export type JobEnv = z.infer<typeof jobSchema>;
 export function loadApiEnv(): ApiEnv {
   const result = apiSchema.safeParse(process.env);
   if (!result.success) {
-    console.error('[config] Missing env vars:', result.error.flatten().fieldErrors);
-    process.exit(1);
+    // ✅ throw, bukan process.exit — biar error-nya keliatan di Vercel logs
+    throw new Error(
+      `[config] Missing env vars: ${JSON.stringify(result.error.flatten().fieldErrors)}`
+    );
   }
   return result.data;
 }
@@ -29,8 +31,9 @@ export function loadApiEnv(): ApiEnv {
 export function loadJobEnv(): JobEnv {
   const result = jobSchema.safeParse(process.env);
   if (!result.success) {
-    console.error('[config] Missing env vars:', result.error.flatten().fieldErrors);
-    process.exit(1);
+    throw new Error(
+      `[config] Missing env vars: ${JSON.stringify(result.error.flatten().fieldErrors)}`
+    );
   }
   return result.data;
 }
