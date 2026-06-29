@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "src/index.vercel.ts": {
+      "runtime": "edge"
+    }
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/src/index.vercel.ts" }
   ]
